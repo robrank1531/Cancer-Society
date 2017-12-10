@@ -10,7 +10,7 @@ namespace Capstone.Web.Models
     {
         public int UserID { get; set; }
 
-        [Required(ErrorMessage = "*")]
+        [Required(ErrorMessage = "User Name is required.")]
         public string UserName { get; set; }
 
         [Required]
