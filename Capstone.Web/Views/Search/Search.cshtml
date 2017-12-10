@@ -1,0 +1,107 @@
+﻿@model Capstone.Web.Models.SearchModel
+
+@{
+    ViewBag.Title = "Search";
+}
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+<script type="text/javascript" src="~/Content/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="~/Content/masonry-docs.min.js"></script>
+<script type="text/javascript" src="~/Content/jquery.js"></script>
+
+
+<script src="~/Content/jquery.min.js"></script>
+<script src="~/Content/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.panel-heading').each(function () {
+            var hue = 'rgb(' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ',' + (Math.floor((256 - 199) * Math.random()) + 200) + ')';
+            $(this).css("background-color", hue);
+        });
+    });
+</script>
+
+<h2 class="body"></h2>
+
+@using (Html.BeginForm("Search", "Search", FormMethod.Post))
+{<div class="container-fluid">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h2>Search For A Recipe</h2></div>
+        <div class="panel-body">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="body">
+        <div class="body">
+        <h3 class="body">Check Categories For Which You Would Like To Search.</h3>
+            </div>
+        <div class="body">
+        @foreach (var kvp in Model.SearchCategories)
+        {
+            @*<input class="checkbox" type="checkbox" name="@kvp.Key" />
+                <label class="categoryLabel" for=""*@
+            <div class="category">
+            @Html.HiddenFor(Model => Model.SearchCategories.Keys)
+            @Html.Label(kvp.Key)
+            @Html.CheckBoxFor(Model => Model.SearchCategories[kvp.Key], false)
+                </div>
+        }
+            </div>
+    </div>
+        <div class="body">
+            <div class="body">
+            <h3> Please Enter Tags For Which You Would Like To Search.</h3> 
+            <h4>Please Separate Tags With a Semicolon(;)</h4>
+                </div>
+            <div class="padding">
+                
+            <h5>@Html.Label("Tag Field: ")</h5>
+                
+                
+                <div class="col-lg-3"></div> <div class="col-lg-6">   @Html.TextAreaFor(Model => Model.TagSearch)  </div> <div class="col-lg-3"></div>
+
+                
+                </div>
+        </div>
+        <div class="container" style="padding-bottom:30px">
+                <div class="col-md-5"></div> <div class="col-md-2"><input type="submit" value="Search" class="btn btn-default" /></div> <div class="col-md-5"></div> 
+            </div>
+        </div>
+     <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+}
+
+@{
+   
+    if (Model.RecipeHash != null)
+    {
+        <div class="container" @*style="background-color: gainsboro"*@>
+            <div id="home">
+                @foreach (var item in Model.RecipeHash)
+                {
+                    string s = "~/App_Data/Img/" + item.ImageName.ToString();
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            @item.Name
+                        </div>
+                        @*<div>
+                        @item.Ingredients
+                    </div>
+                    <div>
+                        @item.Directions
+                    </div>*@
+                        <div class="panel-body">
+
+                            <a href="@Url.Action("Details","Home", new { id = item.RecipeID })"><img style="width:100%;height:auto" src="~/Img/@item.ImageName" /></a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            </div>
+            }
+
+        
+    }

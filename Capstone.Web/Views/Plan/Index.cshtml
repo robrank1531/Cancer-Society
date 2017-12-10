@@ -1,0 +1,44 @@
+﻿@model Capstone.Web.Models.DropDownPlans
+@using System.Collections.Generic
+@using Capstone.Web.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<div class="container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading " style="background-color: lightpink">
+                <h2>View A Plan</h2>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("ViewPlanID", "Plan", FormMethod.Post))
+                {
+
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    foreach (PlanModel plan in Model.PlanModels)
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = plan.PlanName,
+                            Value = plan.PlanId.ToString()
+                        });
+                    }
+                    @Html.DropDownListFor(Model => Model.currentID, listItems, new { @class = "btn btn-default dropdown-toggle" })
+
+                <br />
+                    <button class="btn btn-outline-dark">View Plan</button>
+
+                }
+
+                @Html.ActionLink("| Create Plan |", "CreatePlan", "Plan")
+                @Html.ActionLink("| Add A Meal |", "AddMealToPlan", "Plan")
+            </div>
+        </div>
+    </div>
+</div>
