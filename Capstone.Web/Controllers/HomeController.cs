@@ -301,6 +301,17 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("Admin");
         }
 
+        public ActionResult Nutrition()
+        {
+            return View();
+        }
+
+        public ActionResult TreatmentTips()
+        {
+            return View();
+        }
+     
+
         public ActionResult Failed()
         {
             return View();

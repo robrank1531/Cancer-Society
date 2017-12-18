@@ -270,6 +270,8 @@
     <Content Include="Views\User\ChangeSuccess.cshtml" />
     <Content Include="Views\User\UserPage.cshtml" />
     <Content Include="Views\Home\Failed.cshtml" />
+    <Content Include="Views\Home\Nutrition.cshtml" />
+    <Content Include="Views\Home\TreatmentTips.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

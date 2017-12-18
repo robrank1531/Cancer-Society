@@ -31,19 +31,24 @@
 </script>
 
 
+
 <div class="container" style="background-color:gainsboro">
     <div id="home">
         @foreach (var item in Model)
         {
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    @Html.DisplayFor(modelItem => item.Name)
+            using (Html.BeginForm("DeleteRecipe", "User", new { id = item.RecipeID }, FormMethod.Post))
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </div>
+                    <div class="panel-body">
+                        <a href="@Url.Action("Details", "Home", new { id = item.RecipeID })"><img style="width:100%; height:auto" src="~/Img/@item.ImageName" /></a>
+                        <a href="@Url.Action("Details", "Home", new { id = item.RecipeID })">Details</a>
+                        <button class="btn displayblock btn-outline-dark">delete</button>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <a href="@Url.Action("Details","Home", new { id = item.RecipeID })"><img style="width:100%; height:auto" src="~/Img/@item.ImageName" /></a>
-                    <a href="@Url.Action("Details","Home", new { id = item.RecipeID })">Details</a>
-</div>
-            </div>
+            }
         }
     </div>
 </div>

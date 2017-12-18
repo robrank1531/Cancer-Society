@@ -204,6 +204,13 @@ namespace Capstone.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult DeleteRecipe(int id)
+        {
+            recipeDal.DeleteRecipe(id);
+
+            return RedirectToAction("UserPage");
+        }
 
     }
 }
