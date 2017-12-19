@@ -90,6 +90,14 @@ namespace Capstone.Web.Controllers
             DropDownPlans model = new DropDownPlans();
 
             List<RecipeModel> recipes = recipeDal.GetRecipes();
+            List<RecipeModel> publicrecipes = recipeDal.GetPublicApprovedRecipes();
+
+            foreach (RecipeModel recipe in publicrecipes)
+            {
+                recipes.Add(recipe);
+            }
+
+
             List<PlanModel> plans = planDal.GetAllUserPlans(user.UserID);
             foreach (PlanModel plan in plans)
             {

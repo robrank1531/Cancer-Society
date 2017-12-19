@@ -40,9 +40,9 @@
                     <hr class="colorgraph"><br>
 
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "User Name" })
-                    @Html.ValidationMessageFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                     @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
-                    @Html.ValidationMessageFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
 
                     <button class="btn btn-danger btn-lg btn-block" name="Submit" value="Login" type="Submit">Login</button>
                 </form>

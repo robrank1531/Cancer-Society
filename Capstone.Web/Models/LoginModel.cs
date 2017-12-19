@@ -8,7 +8,7 @@ namespace Capstone.Web.Models
 {
     public class LoginModel
     {
-        //[Required(ErrorMessage = "Input Was Invalid")]
+        [Required(ErrorMessage = "Input Was Invalid")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Input Was Invalid")]
