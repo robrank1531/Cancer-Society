@@ -10,6 +10,8 @@ SELECT * FROM category
 SELECT * FROM user_recipes
 SELECT * FROM meal
 SELECT * FROM meal_plan
+select * from plans
+select * from plan_recipes
 
 DELETE FROM meal_plan WHERE meal_id = '5'
 
