@@ -249,6 +249,7 @@
     <Compile Include="recipe.cs">
       <DependentUpon>ImageModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Environment.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

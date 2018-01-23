@@ -10,6 +10,7 @@ namespace Capstone.Web.App_Start
     using System.Configuration;
     using Ninject;
     using Ninject.Web.Common;
+    using Capstone.Web.Utility;
 
     public static class NinjectWebCommon 
     {
@@ -61,10 +62,10 @@ namespace Capstone.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IPlanSqlDAL>().To<PlanSqlDAL>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["recipeDB"].ConnectionString);
-            kernel.Bind<IUserSqlDAL>().To<UserSqlDAL>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["recipeDB"].ConnectionString);
-            kernel.Bind<IRecipeSqlDAL>().To<RecipeSqlDAL>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["recipeDB"].ConnectionString);
-            kernel.Bind<ISearchSqlDAL>().To<SearchSqlDAL>().WithConstructorArgument("connectionString", ConfigurationManager.ConnectionStrings["recipeDB"].ConnectionString);
+            kernel.Bind<IPlanSqlDAL>().To<PlanSqlDAL>().WithConstructorArgument("connectionString", Enviroment.GetConnectionString());
+            kernel.Bind<IUserSqlDAL>().To<UserSqlDAL>().WithConstructorArgument("connectionString", Enviroment.GetConnectionString());
+            kernel.Bind<IRecipeSqlDAL>().To<RecipeSqlDAL>().WithConstructorArgument("connectionString", Enviroment.GetConnectionString());
+            kernel.Bind<ISearchSqlDAL>().To<SearchSqlDAL>().WithConstructorArgument("connectionString", Enviroment.GetConnectionString());
         }        
     }
 }
